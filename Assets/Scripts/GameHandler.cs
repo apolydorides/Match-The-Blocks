@@ -116,10 +116,10 @@ public class GameHandler : MonoBehaviour
 
     IEnumerator MoveToCenter()
     {
-        activeBlock.GetComponent<SpriteRenderer>().color = new Color( 1, 1, 1, 0.5f);
+        activeBlock.GetComponent<SpriteRenderer>().color = new Color( 1, 1, 1, 0.3f);
         while (activeBlock.transform.position.x > 0.01)
         {
-            activeBlock.transform.position -= new Vector3((2f * Time.deltaTime), 0, 0);
+            activeBlock.transform.position -= new Vector3((3f * Time.deltaTime), 0, 0);
             yield return new WaitForFixedUpdate();
         }
         activeBlock.transform.position = new Vector3( 0, 0, 0);
