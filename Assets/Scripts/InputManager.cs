@@ -24,27 +24,27 @@ public class InputManager : MonoBehaviour
         // legacy: String.Equals(latestPacket, "0000003000000", StringComparison.OrdinalIgnoreCase)
         // to check label directly from padded packet
         
-        if (Input.GetKeyDown("w") || (popularLabel== 1) || (testLabel == "1"))
+        if (Input.GetKeyDown("w") || (popularLabel== 2) || (testLabel == "2"))
         {
             inputState = 1;
         }
-        else if (Input.GetKeyDown("s") || (popularLabel == 2) || (testLabel == "2"))
+        else if (Input.GetKeyDown("s") || (popularLabel == 3) || (testLabel == "3"))
         {
             inputState = 2;
         }
-        else if (Input.GetKeyDown("d") || (popularLabel == 3) || (testLabel == "3"))
+        else if (Input.GetKeyDown("d") || (popularLabel == 4) || (testLabel == "4"))
         {
             inputState = 3;
         }
-        else if (Input.GetKeyDown("a") || (popularLabel == 4) || (testLabel == "4"))
+        else if (Input.GetKeyDown("a") || (popularLabel == 5) || (testLabel == "5"))
         {
             inputState = 4;
         }
-        else if (Input.GetKeyDown("e") || (popularLabel == 5) || (testLabel == "5"))
+        else if (Input.GetKeyDown("e") || (popularLabel == 6) || (testLabel == "6"))
         {
             inputState = 5;
         }
-        else if (Input.GetKeyDown("q") || (popularLabel == 6) || (testLabel == "6"))
+        else if (Input.GetKeyDown("q") || (popularLabel == 7) || (testLabel == "7"))
         {
             inputState = 6;
         }
