@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
         {
             inputState = 2;
         }
-        else if (Input.GetKeyDown("d") || (popularLabel == 4) || (testLabel == "4"))
+        /* else if (Input.GetKeyDown("d") || (popularLabel == 4) || (testLabel == "4"))
         {
             inputState = 3;
         }
@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
         else if (Input.GetKeyDown("q") || (popularLabel == 7) || (testLabel == "7"))
         {
             inputState = 6;
-        }
+        } */
     }
 
 }

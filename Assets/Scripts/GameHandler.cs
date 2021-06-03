@@ -10,34 +10,40 @@ public class GameHandler : MonoBehaviour
     public Camera cam;
     public bool spawner;
     public int state;
-    public GameObject rotationBlock;
-    public GameObject cardinalBlock;
+    // public GameObject rotationBlock;
+    // public GameObject cardinalBlock;
+    public GameObject openBlock;
+    public GameObject closedBlock;
     public GameObject activeBlock;
-    SpriteRenderer cardinalSprite;
-    SpriteRenderer rotationSprite;
+    // SpriteRenderer cardinalSprite;
+    // SpriteRenderer rotationSprite;
+    SpriteRenderer openSprite;
+    SpriteRenderer closedSprite;
     Vector3 startingPosition;
     Vector3 finalPosition = new Vector3( 0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        cardinalSprite = cardinalBlock.GetComponent<SpriteRenderer>();
-        rotationSprite = rotationBlock.GetComponent<SpriteRenderer>();
-        // gets the x and y dimensions of the arrow boxes
-        float blockWidth = cardinalSprite.bounds.size.x;
-        float blockHeight = cardinalSprite.bounds.size.y;
+        // cardinalSprite = cardinalBlock.GetComponent<SpriteRenderer>();
+        // rotationSprite = rotationBlock.GetComponent<SpriteRenderer>();
+        openSprite = openBlock.GetComponent<SpriteRenderer>();
+        closedSprite = closedBlock.GetComponent<SpriteRenderer>();
+        // gets the x and y dimensions of the boxes
+        float blockWidth = openSprite.bounds.size.x;
+        float blockHeight = openSprite.bounds.size.y;
         // gets the x and y dimensions of the camera view
         cam = Camera.main;
         float height = 2f * cam.orthographicSize;
         float width = height * cam.aspect;
         // sets starting position so that whole arrow block is out of the camera's view
         startingPosition = new Vector3( (width/2) + (blockWidth/2), 0, 0);
-        rotationBlock.transform.position = startingPosition;
-        cardinalBlock.transform.position = startingPosition;
-        activeBlock = cardinalBlock;
+        openBlock.transform.position = startingPosition;
+        closedBlock.transform.position = startingPosition;
+        activeBlock = closedBlock;
         // hide both arrow blocks
-        cardinalSprite.enabled = false;
-        rotationSprite.enabled = false;
+        closedSprite.enabled = false;
+        openSprite.enabled = false;
 
         activeBlock.transform.eulerAngles = Vector3.forward * 0;
         activeBlock.GetComponent<SpriteRenderer>().flipY = false;
@@ -72,11 +78,20 @@ public class GameHandler : MonoBehaviour
 
     void RandomGenerator()
     {
-        int rand = Random.Range(1,7);
+        // int rand = Random.Range(1,7);
+        int rand = Random.Range(1,3);
         state = rand;
         switch (rand)
         {
-            case 1: // arrow up
+            case 1: // hand close
+                closedSprite.enabled = true;
+                activeBlock = closedBlock;
+                break;
+            case 2: // hand open
+                openSprite.enabled = true;
+                activeBlock = openBlock;
+                break;
+            /* case 1: // arrow up
                 cardinalSprite.enabled = true;
                 cardinalBlock.transform.eulerAngles = Vector3.forward * 90;
                 activeBlock = cardinalBlock;
@@ -103,7 +118,7 @@ public class GameHandler : MonoBehaviour
                 rotationSprite.enabled = true;
                 rotationSprite.flipY = true;
                 activeBlock = rotationBlock;
-                break;
+                break; */
             default:
                 break;
         }
